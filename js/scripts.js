@@ -8,17 +8,15 @@ let pokemonList = [
     type: ['fire']},
 
   { name: 'Jigglypuff', 
-    height: 0.5, 
+    height: 0.4, 
     type: ['fairy', 'normal']},
 ]
 
-for (let i = 0; i < pokemonList.height; i++) {
+for (let i = 0; i < pokemonList.length; i++) {
     if (pokemonList[i].height > 1) {
         document.write('<p>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') - Wow, that\'s big!')
-    } else if (pokemonList[i].height <= 1 && pokemonList[i].height > 0.5) {
-    } else if (pokemonList[i].height <= 1 && pokemonList[i].height > 0.5) {
+    } else if (pokemonList[i].height <= 1 && pokemonList[i].height >= 0.5) {
         document.write('<p>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') - That\'s a decent size.')
     } else if (pokemonList[i].height < 0.5) {
-    } else if (pokemonList[i].height < 0.5) {
-        document.write('<p>' + pokemonList[i].name + ' (height: ' + pokemonList[i].weight + ') - That\'s a cute size!')
+        document.write('<p>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ') - That\'s a cute size!')
     }}
