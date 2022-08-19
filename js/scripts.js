@@ -22,5 +22,4 @@ let pokemonList = [
 //    }}
 
 pokemonList.forEach(function(pokemon) {
-  console.log(pokemon.name + ' is ' + pokemon.height + 'm high and is a ' + pokemon.type + ' pokemon!'  )
 });
