@@ -5,11 +5,11 @@ let pokemonRepository = (function () {
     height: 1.1, 
     type: ['bug', 'flying']},
   
-  { name: 'Cyndaquil', 
+    { name: 'Cyndaquil', 
     height: 0.5, 
     type: ['fire']},
 
-  { name: 'Jigglypuff', 
+    { name: 'Jigglypuff', 
     height: 0.4, 
     type: ['fairy', 'normal']},
     
