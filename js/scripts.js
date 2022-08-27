@@ -1,5 +1,5 @@
 let pokemonRepository = (function () {
-  let   pokemonList = [
+  let   repository = [
   
     { name: 'Butterfree', 
     height: 1.1, 
@@ -15,20 +15,38 @@ let pokemonRepository = (function () {
     
   ];
   
-  function getAll() {
-      return pokemonList;
-  }
+  
   function add(pokemon) {
-      pokemonList.push(pokemon);
+      repository.push(pokemon);
+  }
+
+  function getAll() {
+    return repository;
+}
+
+  function addListItem(pokemon){
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement('li');
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
   }
 
   return {
-    getAll: getAll,
     add: add,
-  }
+    getAll: getAll,
+    addListItem: addListItem
+  };
 })();
 
-let pokemonList = pokemonRepository.getAll();
+
+console.log(pokemonRepository.getAll());
+
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
+})
 
 //    FOR REFERENCE ONLY - 'for' loop 
 //    for (let i = 0; i < pokemonList.length; i++) {
@@ -51,16 +69,3 @@ let pokemonList = pokemonRepository.getAll();
 //    document.write('<p>' + pokemon.name + ' is ' + pokemon.height + 'm high and is a ' + pokemon.type + ' pokemon!' + ' - That\'s a cute size!' + '</p>')
 //    }
 //    })
-
-console.log(pokemonRepository.getAll());
-
-pokemonRepositoryt.getAll().forEach(function (pokemon) {
-  let pokemonList = document.querySelector(".pokemon-list");
-  let listpokemon = document.createElement('li');
-  let button = document.createElement("button");
-  button.innerText = "placeholder";
-  button.classList.add("button-class");
-  listpokemon.appendChild(button);
-  pokemonList.appendChild(listpokemon);
-});
-
