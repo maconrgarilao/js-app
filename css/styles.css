@@ -1,3 +1,11 @@
+#x {
+    min-width: 360px;
+    max-width: 600px;
+    width: 250px;
+    margin-right: 40px;
+    border-radius: 50px;
+}
+
 .button-class {
     background-color: #000000;
     border: none;
