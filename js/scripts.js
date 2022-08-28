@@ -48,6 +48,16 @@ let pokemonRepository = (function () {
   };
 })();
 
+//  adding an image  //
+
+var img = document.createElement("img");
+
+img.src = "img/map.svg";
+var src = document.getElementById("x");
+
+src.appendChild(img);
+
+//  end code for adding an image  //
 
 console.log(pokemonRepository.getAll());
 
