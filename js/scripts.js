@@ -17,7 +17,7 @@ let pokemonRepository = (function () {
   
   
   function add(pokemon) {
-      repository.push(pokemon);
+    repository.push(pokemon);
   }
 
   function getAll() {
@@ -32,7 +32,14 @@ let pokemonRepository = (function () {
     button.classList.add("button-class");
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
-  }
+    button.addEventListener('click', function(event){
+      showDetails(pokemon)
+    })
+  };
+
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  };
 
   return {
     add: add,
