@@ -1,27 +1,13 @@
 let pokemonRepository = (function () {
-  let   repository = [
-  
-    { name: 'Butterfree', 
-    height: 1.1, 
-    type: ['bug', 'flying']},
-  
-    { name: 'Cyndaquil', 
-    height: 0.5, 
-    type: ['fire']},
-
-    { name: 'Jigglypuff', 
-    height: 0.4, 
-    type: ['fairy', 'normal']},
-    
-  ];
-  
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   
   function add(pokemon) {
-    repository.push(pokemon);
+    pokemonList.push(pokemon);
   }
 
   function getAll() {
-    return repository;
+    return pokemonList;
 }
 
   function addListItem(pokemon){
