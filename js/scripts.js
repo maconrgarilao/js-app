@@ -59,7 +59,9 @@ let pokemonRepository = (function () {
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 })();
 
@@ -74,11 +76,14 @@ src.appendChild(img);
 
 //  end code for adding an image  //
 
-console.log(pokemonRepository.getAll());
+// console.log(pokemonRepository.getAll());
 
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
-})
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
+  });
+});
+
 
 //    FOR REFERENCE ONLY - 'for' loop 
 //    for (let i = 0; i < pokemonList.length; i++) {
