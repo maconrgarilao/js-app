@@ -1,6 +1,48 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let modalContainer = document.querySelector('#modal-container');
+
+  function showModal(pokemon) {
+    modalContainer.innerHTML = '';
+    let modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    let closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.innerText = 'Close';
+    closeButtonElement.addEventListener('click', hideModal);
+
+    let titleElement = document.createElement('h1');
+    titleElement.innerText = pokemon.name;
+
+    let contentElement = document.createElement('p');
+    contentElement.innerText = pokemon.height;
+
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(titleElement);
+    modal.appendChild(contentElement);
+    modalContainer.appendChild(modal);
+
+    modalContainer.classList.add('is-visible');
+  }
+
+  function hideModal() {
+    modalContainer.classList.remove('is-visible');
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+  });
+
+  modalContainer.addEventListener('click', (e) => {
+    let target = e.target;
+    if (target === modalContainer) {
+      hideModal();
+    }
+  });
   
   function add(pokemon) {
     pokemonList.push(pokemon);
@@ -8,7 +50,7 @@ let pokemonRepository = (function () {
 
   function getAll() {
     return pokemonList;
-}
+  }
 
   function addListItem(pokemon){
     let pokemonList = document.querySelector(".pokemon-list");
@@ -18,13 +60,17 @@ let pokemonRepository = (function () {
     button.classList.add("button-class");
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
-    button.addEventListener('click', function(event){
-      showDetails(pokemon)
-    })
+    button.addEventListener('click', function(){
+      showDetails(pokemon);
+    });
   };
 
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      showModal(pokemon);
+      console.log(pokemon);
+
+    });
   };
 
   function loadList() {
@@ -56,6 +102,8 @@ let pokemonRepository = (function () {
     });
   };
 
+ 
+
   return {
     add: add,
     getAll: getAll,
@@ -65,12 +113,13 @@ let pokemonRepository = (function () {
   };
 })();
 
+
 //  adding an image  //
 
 var img = document.createElement("img");
 
 img.src = "img/map.svg";
-var src = document.getElementById("x");
+var src = document.getElementById("pokemon-map");
 
 src.appendChild(img);
 
