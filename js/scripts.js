@@ -79,9 +79,6 @@ let pokemonRepository = (function () {
     let contentElement = document.createElement('p');
     contentElement.innerText = 'Height: ' + pokemon.height + 'm';
     
-    let secondcontentElement = document.createElement('p');
-    secondcontentElement.innerText = 'Type\/s : ' + pokemon.types.map(obj => obj.name);
-
     let imgElement = document.createElement('img');
     imgElement.classList.add('img-element');
 
@@ -92,7 +89,6 @@ let pokemonRepository = (function () {
     modal.appendChild(titleElement);
     modal.appendChild(contentElement);
     modal.appendChild(imgElement);
-    modal.appendChild(secondcontentElement);
     modalContainer.appendChild(modal);
 
     modalContainer.classList.add('is-visible');
