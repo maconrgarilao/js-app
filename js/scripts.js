@@ -2,14 +2,9 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   
-  function add(pokemon) {
-    if (typeof pokemon !== 'object') {
-      alert('New pokemon must be entered as an object');
-    } else if (!('name' in pokemon) || !('detailsUrl' in pokemon)) {
-      alert('New pokemon must be entered with item keys name and detailsUrl');
-    } else {
-      pokemon.push(pokemon);
-    }
+  function add(pokemonData) {
+    console.log("pokemon", pokemonData)
+    pokemonList.push(pokemonData);
   }
 
   function getAll() {
@@ -18,11 +13,9 @@ let pokemonRepository = (function () {
 
   function addListItem(pokemon){
     let pokemonList = $('.list-group');
-    let listpokemon = $('<li class="list-group-item></li>');
-    let button = $(`<button type="button" class="btn list-group-item list-group-item-action list-group-item-light" data-toggle="modal" data-target="exampleModal">${pokemon.name}</button>`);
+    let button = $(`<button type="button" class="btn btn-primary list-group-item list-group-item-action list-group-item-light" data-toggle="modal" data-target="exampleModal">${pokemon.name}</button>`);
     button.addClass('.list-button');
-    listpokemon.append(button);
-    pokemonList.append(listPokemon);
+    pokemonList.append(button);
     button.on('click', function () {
       showDetails(pokemon);
     });
@@ -39,11 +32,11 @@ let pokemonRepository = (function () {
   function loadList() {
     return $.ajax(apiUrl).then(function (json) {
       json.results.forEach(function (pokemon) {
-        let pokemon = {
+        let pokemonData = {
           name: (pokemon.name).charAt(0).toUpperCase() + (pokemon.name).slice(1),
           detailsUrl: pokemon.url
         };
-        add(pokemon);
+        add(pokemonData);
       });
     }).catch(function (e) {
       console.error (e)
@@ -51,7 +44,7 @@ let pokemonRepository = (function () {
   };
 
   function loadDetails(pokemon) {
-    let url = item.detailsUrl;
+    let url = pokemon.detailsUrl;
     return $.ajax(url).then(function (details) {
       pokemon.imageUrl = details.sprites.front_default;
       pokemon.height = details.height;
