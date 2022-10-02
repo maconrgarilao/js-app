@@ -13,14 +13,13 @@ body {
     background-color: whitesmoke;
 }
 
-header {
+.page-header {
     background-color: var(--color-header);
     color: var(--color-header-text);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h3 {
-    background-color: var(--color-subheader);
     color: var(--color-subheader-text);
     margin-bottom: 0;
 }
