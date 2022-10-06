@@ -7,20 +7,15 @@
     --color-header-text: #ffffff;
     --color-subheader: #6b6963;
     --color-subheader-text: #c79f26;
+    --modal-bg-button:  #ffff;
 }
 
 body {
     background-color: whitesmoke;
 }
 
-.page-header {
-    background-color: var(--color-header);
-    color: var(--color-header-text);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 h3 {
-    color: var(--color-subheader-text);
+    color: var(--color-header);
     margin-bottom: 0;
 }
 
@@ -30,5 +25,28 @@ ul {
 
 li.list-group-item {
     padding: 0;
+}
+
+.btn {
+    color: var(--color-subheader-text);
+    border-color: var(--color-subheader-text);
+}
+
+.modal-title {
+    color: var(--color-header);
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.modal-footer .btn {
+    background-color: var(--modal-bg-button);
+    border-color: var(--color-subheader-text);
+}
+
+.btn:hover {
+    color: var(--color-header);
+    border-color: var(--color-header);
 }
 
