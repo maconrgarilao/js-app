@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   
   function add(pokemonData) {
-    console.log("pokemon", pokemonData)
+    console.log('pokemon', pokemonData)
     pokemonList.push(pokemonData);
   }
 
@@ -12,14 +13,16 @@ let pokemonRepository = (function () {
   }
 
   function addListItem(pokemon){
+    // eslint-disable-next-line no-undef
     let pokemonList = $('.list-group');
+    // eslint-disable-next-line no-undef
     let button = $(`<button type="button" class="btn btn-primary list-group-item list-group-item-action list-group-item-light" data-toggle="modal" data-target=".modal">${pokemon.name}</button>`);
     button.addClass('.list-button');
     pokemonList.append(button);
     button.on('click', function () {
       showDetails(pokemon);
     });
-  };
+  }
 
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
@@ -27,7 +30,7 @@ let pokemonRepository = (function () {
       console.log(pokemon);
 
     });
-  };
+  }
 
   function loadList() {
     return $.ajax(apiUrl).then(function (json) {
@@ -41,7 +44,7 @@ let pokemonRepository = (function () {
     }).catch(function (e) {
       console.error (e)
     })
-  };
+  }
 
   function loadDetails(pokemon) {
     let url = pokemon.detailsUrl;
@@ -55,7 +58,7 @@ let pokemonRepository = (function () {
     }).catch(function (e) {
       console.error(e);
     });
-  };
+  }
 
   function showModal(pokemon) {
     let modalBody = $('.modal-body');
@@ -64,7 +67,7 @@ let pokemonRepository = (function () {
     modalTitle.empty();
     modalBody.empty();
 
-    let nameElement = $("<h1>" + pokemon.name + "</h1>");
+    let nameElement = $('<h1>' + pokemon.name + '</h1>');
     let imageElement = $('<img class="modal-img" style="width:50%">');
     imageElement.attr('src', pokemon.imageUrl);
     let heightElement = $(`<p>Height: ${pokemon.height}</p>`);
